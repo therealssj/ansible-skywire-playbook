@@ -6,5 +6,6 @@
     - default.config.yml
 
   roles:
-    - fubarhouse.golang
+    - role: gantsign.golang
+      golang_gopath: "{{ GOPATH }}"
     - skywire

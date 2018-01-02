@@ -1,5 +1,5 @@
 ---
 GOPATH: ~/go
-SKYWIRE_REPO: https://github.com/skycoin/skywire.git
-NODELOG: /tmp/node.log
-MANAGERLOG: /tmp/manager.log
+skywire_repo: https://github.com/skycoin/skywire.git
+node_log_file: /tmp/node.log
+manger_log_file: /tmp/manager.log

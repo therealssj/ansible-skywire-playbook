@@ -1,25 +1,25 @@
 - name: Create skywire directory
-  file: path={{ GOPATH }}/src/github.com/skycoin state=directory
+  file: path={{ golang_gopath }}/src/github.com/skycoin state=directory
 
 - name: Go to skywire directory and clone the git repository
   git: repo={{ skywire_repo }}
-       dest={{ GOPATH }}/src/github.com/skycoin/skywire
+       dest={{ golang_gopath }}/src/github.com/skycoin/skywire
        accept_hostkey=yes
 
 - name: Go to cmd directory and install the binaries
   shell: go install ./...
   args:
-    chdir: "{{ GOPATH }}/src/github.com/skycoin/skywire/cmd"
+    chdir: "{{ golang_gopath }}/src/github.com/skycoin/skywire/cmd"
   environment:
     PATH: "{{ golang_install_dir }}/bin:{{ ansible_env.PATH }}"
 
 - name: Go to go binaries folder and start manager in the background
-  shell: ./manager -web-dir {{ GOPATH }}/src/github.com/skycoin/skywire/static/skywire-manager >{{ manger_log_file }} 2>&1 &
+  shell: ./manager -web-dir {{ golang_gopath }}/src/github.com/skycoin/skywire/static/skywire-manager >{{ manger_log_file }} 2>&1 &
   args:
-    chdir: "{{ GOPATH }}/bin"
+    chdir: "{{ golang_gopath }}/bin"
 
 - name: Start a skywire node
   shell: ./node -connect-manager -manager-address :5998 -manager-web :8000 -discovery-address messenger.skycoin.net:5999 -address :5000 -web-port :6001 >{{ node_log_file }} 2>&1 &
   args:
-    chdir: "{{ GOPATH }}/bin"
+    chdir: "{{ golang_gopath }}/bin"
   

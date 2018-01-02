@@ -1,5 +1,5 @@
 ---
-GOPATH: ~/go
+golang_gopath: /root/go
 skywire_repo: https://github.com/skycoin/skywire.git
 node_log_file: /tmp/node.log
 manger_log_file: /tmp/manager.log

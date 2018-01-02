@@ -1,2 +1,3 @@
 ---
-gopath: ~/go/
+GOPATH: ~/go/
+skywire_repo: https://github.com/skycoin/skywire.git
